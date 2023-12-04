@@ -16,7 +16,7 @@ namespace TermMacros
         private void Awake()
         {
             // Plugin startup logic
-            Logger.LogError($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Logger.LogInfo($"Plugin me.kdcf.termspeak is loaded!");
             _harmony.PatchAll(typeof(TermSpeak));
         }
 

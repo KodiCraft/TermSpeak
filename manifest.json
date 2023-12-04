@@ -1,0 +1,7 @@
+{
+  "name": "TermSpeak",
+  "description": "Allows you to use the walkie-talkie while on the terminal.",
+  "version_number": "1.0.0",
+  "dependencies": [],
+  "website_url": "https://github.com/KodiCraft/TermSpeak"
+}
