@@ -1,8 +1,6 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using GameNetcodeStuff;
 
 
 namespace TermMacros
@@ -23,10 +21,46 @@ namespace TermMacros
         }
 
         [HarmonyPatch(nameof(Terminal.BeginUsingTerminal))]
-        [HarmonyPrefix]
-        public static void OpenTerminal()
+        [HarmonyPostfix]
+        public static void OpenTerminal(Terminal __instance)
         {
-            _log.LogInfo("Terminal opened!");
-        }   
+            SetWalkieMode(true);
+        }
+
+        [HarmonyPatch(nameof(Terminal.QuitTerminal))]
+        [HarmonyPostfix]
+        public static void CloseTerminal(Terminal __instance)
+        {
+            SetWalkieMode(false);
+        }
+
+        public static void SetWalkieMode(bool enabled)
+        {
+            _log.LogInfo("Terminal opened! Trying to find walkie talkie...");
+            var player = GameNetworkManager.Instance.localPlayerController;
+            _log.LogInfo($"There are {player.ItemSlots.Length} item slots to check.");
+            GrabbableObject walkieTalkie = null;
+            for (int i = 0; i < player.ItemSlots.Length; i++)
+            {
+                // isBeingUsed on the WalkieTalkie represents if it's powered or not.
+                // It doesn't represent if it's being held or not, which is what we want.
+                // We don't care if it's powered or not when trying to disable it, just in case
+                // it's somehow unpowered while the user is holding it.
+                if (player.ItemSlots[i] is WalkieTalkie && (!enabled || player.ItemSlots[i].isBeingUsed))
+                {
+                    walkieTalkie = player.ItemSlots[i];
+                    break;
+                }
+            }
+            if (walkieTalkie == null)
+            {
+                _log.LogInfo("No walkie talkie found!");
+            }
+            else
+            {
+                _log.LogInfo("Found walkie talkie! Trying to set its mode...");
+                walkieTalkie.UseItemOnClient(enabled); // Start the walkie talkie
+            }
+        }
     }   
 }
