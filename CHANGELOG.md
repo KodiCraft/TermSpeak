@@ -5,3 +5,7 @@
 # 1.0.1
 
 - Fixed image size to be publishable on Thunderstore
+
+# 1.0.2
+
+- Properly require dependencies

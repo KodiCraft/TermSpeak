@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace TermMacros
 {
-    [BepInPlugin("me.kdcf.termspeak", "TermSpeak", "1.0.1")]
+    [BepInPlugin("me.kdcf.termspeak", "TermSpeak", "1.0.2")]
     [BepInProcess("Lethal Company.exe")]
     [HarmonyPatch(typeof(Terminal))]
     public class TermSpeak : BaseUnityPlugin
