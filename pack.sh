@@ -17,7 +17,9 @@ cp "${SOURCE}/README.md" /tmp/termspeak_pack
 cp "${SOURCE}/CHANGELOG.md" /tmp/termspeak_pack
 cp "${SOURCE}/manifest.json" /tmp/termspeak_pack
 cp "${SOURCE}/icon.png" /tmp/termspeak_pack
-cp "${SOURCE}/bin/Release/netstandard2.1/TermSpeak.dll" /tmp/termspeak_pack
+
+mkdir -p /tmp/termspeak_pack/BepInEx/plugins
+cp "${SOURCE}/bin/Release/netstandard2.1/TermSpeak.dll" /tmp/termspeak_pack/BepInEx/plugins
 
 # Create the zip file.
 pushd /tmp/termspeak_pack || exit

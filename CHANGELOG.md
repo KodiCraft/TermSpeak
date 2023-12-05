@@ -9,3 +9,6 @@
 # 1.0.2
 
 - Properly require dependencies
+
+# 1.0.3
+- Fix packaging
