@@ -8,6 +8,10 @@ This mod is client-side only, you can use it on servers without the host having 
 ## Installation
 The mod is a standard BepInEx plugin, so just drop the `.dll` it in your `BepInEx/plugins` folder.
 
+## Configuration
+The configuration file is located in `BepInEx/config/me.kdcf.termspeak.cfg`.
+All keys are described in the file.
+
 ## Building
 To build the mod, make sure you copy/symlink the following files from the game directory into the `TermSpeak/lib` folder:
 - `Assembly-CSharp.dll`

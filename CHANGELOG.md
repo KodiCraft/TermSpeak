@@ -12,3 +12,6 @@
 
 # 1.0.3
 - Fix packaging
+
+# 1.1.0
+- Add option `needWalkieInHand` to require you to hold the walkie-talkie to activate it.
